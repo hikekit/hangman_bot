@@ -1,9 +1,13 @@
 require: slotfilling/slotFilling.sc
   module = sys.zb-common
 require: words.csv
-  name = word
-  var = word
+  name = words
+  var = words
 require: functions.js  
+
+patterns:
+    $alphabet = (а/б/в/г/д/е/ё/ж/з/и/й/к/л/м/н/о/п/р/с/т/у/ф/х/ц/ч/ш/щ/ъ/ы/ь/э/ю/я)
+    
   
 theme: /
 
@@ -20,18 +24,28 @@ theme: /
     state: Rules
         intent!: /ReadyToPlay
         script:
-            $session.keys = Object.keys(word);
-            $session.word = word[chooseRandWordKey($session.keys)].value.word;
+            $session.keys = Object.keys(words);
+            $session.word = words[chooseRandWordKey($session.keys)].value.name;
             $reactions.answer($session.word);
-        a: Отлично, начнем! У тебя есть 6 жизней: стоимость одной жизни - неправильная буква или слово. Слово можно угадывать по буквам или целиком.
-        a: Я загадал слово {{hiddenWordOutput($session.word)}}.
+        if: !$client.wasAuthorised
+            a: Отлично, начнем! У тебя есть 6 жизней: стоимость одной жизни - неправильная буква или слово. Слово можно угадывать по буквам или целиком.
+            a: Я загадал слово {{hiddenWordOutput($session.word)}}.
+        else:
+            a: Я загадал слово {{hiddenWordOutput($session.word)}}.
         
     state: PlayHangerman
         state: LetterResieved
-            intent: /Letter
-            # if(checkLetter = true
+            q:  $alphabet
+            # script:
+            # if(checkLetter = true) {
+                # ...
+            #endGame
+            #remainLetters = $session.word.length
+            #if remainLetters < 0 {
+                #a:
+            
 
-    state: Bye
+    state: 
         intent!: /пока
         a: Пока пока
 

@@ -64,9 +64,9 @@ function chooseRandWordKey(keys) {
 }
 
 function hiddenWordOutput(word) {
-    let hiddenWord = ""
-    for (let i = 0; i < word.length; i++) {
-        hiddenWord += "_"    
+    var hiddenWord = ""
+    for (var i = 0; i < word.length; i++) {
+        hiddenWord += "_ "    
     }
     return hiddenWord
 }
