@@ -6,7 +6,10 @@ require: words.csv
 require: functions.js  
 
 patterns:
-    $alphabet = (а/б/в/г/д/е/ё/ж/з/и/й/к/л/м/н/о/п/р/с/т/у/ф/х/ц/ч/ш/щ/ъ/ы/ь/э/ю/я)
+    $Alphabet = (а/б/в/г/д/е/ё/ж/з/и/й/к/л/м/н/о/п/р/с/т/у/ф/х/ц/ч/ш/щ/ъ/ы/ь/э/ю/я)
+    $let = ([давай|пусть будет|хочу|будет|назову|называю] букв*)
+    
+$alphabet = $entity<$Alphabet> || converter = AlphabetTagConverter    
     
   
 theme: /
@@ -35,7 +38,8 @@ theme: /
         
     state: PlayHangerman
         state: LetterResieved
-            q:  $alphabet
+            q: *{$let * $alphabet}*
+            a: Вы назвали букву {{$parseTree.value}}
             # script:
             # if(checkLetter = true) {
                 # ...
