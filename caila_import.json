@@ -17,30 +17,84 @@
   },
   "intents" : [ {
     "id" : 12326264,
-    "path" : "/пока",
+    "path" : "/LetsPlay",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "пока"
+      "text" : "давай играть"
+    }, {
+      "text" : "давай еще поиграем"
+    }, {
+      "text" : "хочу еще поиграть"
+    }, {
+      "text" : "давай играть"
+    }, {
+      "text" : "сыграем"
+    }, {
+      "text" : "еще игру"
+    }, {
+      "text" : "давай еще игру"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
     "priority" : 0
   }, {
     "id" : 12326265,
-    "path" : "/привет",
+    "path" : "/ReadyToPlay",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "привет"
+      "text" : "да"
+    }, {
+      "text" : "готов"
+    }, {
+      "text" : "давай начнем"
+    }, {
+      "text" : "да я готов"
+    }, {
+      "text" : "давай поиграем"
     } ],
     "classificationRules" : {
       "refs" : [ ]
     },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "id" : 12330232,
+    "path" : "/Letter",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
     "priority" : 0
   } ],
-  "entities" : [ ],
+  "entities" : [ {
+    "entity" : {
+      "id" : 178038,
+      "name" : "буква",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : true,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "id" : 14741744,
+      "type" : "pattern",
+      "rule" : [ "(а|б|в|г|д|е|ё|ж|з|и|й|к|л|м|н|о|п|р|с|т|у|ф|х|ц|ч|ш|щ|ъ|ы|ь|э|ю|я)" ],
+      "value" : "а"
+    } ]
+  } ],
   "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
   "spellerDictionary" : [ ],
   "systemEntities" : [ {
