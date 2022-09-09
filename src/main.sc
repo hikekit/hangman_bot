@@ -35,10 +35,8 @@ theme: /
         
     state: PlayHangerman
         state: LetterResieved
-            q!: *($alphabet)*
-            script:
-                log("///////////MY LOG: " + toPrettyString($parseTree))
-            #a: Вы назвали букву {{toPrettyString($parseTree)}}
+            q: *($let * $alphabet)*
+            a: Вы назвали букву {{$parseTree.alphabet.text)}}
             # script:
             # if(checkLetter = true) {
                 # ...
@@ -55,3 +53,4 @@ theme: /
     state: NoMatch
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
+        go:..
