@@ -4,10 +4,6 @@ require: words.csv
   name = words
   var = words
 require: functions.js  
-
-patterns:
-    $Alphabet = (а/б/в/г/д/е/ё/ж/з/и/й/к/л/м/н/о/п/р/с/т/у/ф/х/ц/ч/ш/щ/ъ/ы/ь/э/ю/я)
-    $let = ([давай|пусть будет|хочу|будет|назову|называю] букв*)
     
 $alphabet = $entity<$Alphabet> || converter = AlphabetTagConverter    
     
@@ -39,7 +35,7 @@ theme: /
     state: PlayHangerman
         state: LetterResieved
             q: *{$let * $alphabet}*
-            a: Вы назвали букву {{$parseTree.value}}
+            a: Вы назвали букву {{toPrettyString($parseTree)}}
             # script:
             # if(checkLetter = true) {
                 # ...
