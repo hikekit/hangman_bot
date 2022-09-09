@@ -3,9 +3,10 @@ require: slotfilling/slotFilling.sc
 require: words.csv
   name = words
   var = words
-require: functions.js  
+require: functions.js 
+require: patterns.sc 
     
-$alphabet = $entity<$Alphabet> || converter = AlphabetTagConverter    
+#$alphabet = $entity<$Alphabet> || converter = AlphabetTagConverter    
     
   
 theme: /
@@ -34,8 +35,10 @@ theme: /
         
     state: PlayHangerman
         state: LetterResieved
-            q: *{$let * $alphabet}*
-            a: Вы назвали букву {{toPrettyString($parseTree)}}
+            q!: *($alphabet)*
+            script:
+                log("///////////MY LOG: " + toPrettyString($parseTree))
+            #a: Вы назвали букву {{toPrettyString($parseTree)}}
             # script:
             # if(checkLetter = true) {
                 # ...
@@ -45,7 +48,7 @@ theme: /
                 #a:
             
 
-    state: 
+    state: Bye
         intent!: /пока
         a: Пока пока
 
